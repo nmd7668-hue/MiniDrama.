@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MiniDrama Firebase Test</title>
+<style>
+body {
+  background:#09090d;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:25px;
+}
+button {
+  background:#ff315e;
+  color:white;
+  border:0;
+  padding:14px 22px;
+  border-radius:10px;
+  font-size:16px;
+}
+#result {
+  margin-top:20px;
+  padding:15px;
+  background:#20202a;
+  border-radius:10px;
+}
+</style>
+</head>
+<body>
+
+<h2>🎬 MiniDrama Firebase Test</h2>
+<p>Firebase Database সংযোগ পরীক্ষা করুন।</p>
+
+<button id="test">Test Firebase Connection</button>
+
+<div id="result">এখনো পরীক্ষা করা হয়নি।</div>
+
+<script type="module">
+import { db } from "./firebase-init.js";
+
+import {
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const result = document.getElementById("result");
+
+document.getElementById("test").onclick = async () => {
+  result.textContent = "পরীক্ষা চলছে...";
+
+  try {
+    await getDoc(doc(db, "app_config", "status"));
+
+    result.innerHTML =
+      "✅ Firebase Firestore Connection Successful!";
+  } catch (error) {
+    result.textContent =
+      "❌ Error: " + error.code + " — " + error.message;
+    console.error(error);
+  }
+};
+</script>
+
+</body>
+</html>
