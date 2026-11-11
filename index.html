@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09090d"><meta name="description" content="MiniDrama — ছোট ছোট গল্প, বড় বিনোদন।">
+<title>MiniDrama — Short Drama</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">M</span> MiniDrama</a>
+  <div class="search"><span>⌕</span><input id="searchInput" placeholder="নাটক খুঁজুন..." aria-label="নাটক খুঁজুন"></div>
+  <nav><a href="#home">হোম</a><a href="#categories">ক্যাটাগরি</a><a href="admin.html">Admin</a></nav>
+</header>
+<main id="home">
+<section class="hero">
+  <div class="hero-copy"><p class="eyebrow">MINIDRAMA ORIGINALS</p><h1>প্রতিদিন নতুন গল্প।<br><em>নতুন অনুভূতি।</em></h1>
+  <p>আপনার পছন্দের শর্ট ড্রামা, এক জায়গায়।</p><a class="primary-btn" href="#latest">এখনই দেখুন ▶</a></div>
+  <div class="hero-art"><div class="poster-stack"><div class="poster poster-a">শেষ বিকেলের<br>গল্প</div><div class="poster poster-b">ভালোবাসার<br>শেষ চিঠি</div><div class="poster poster-c">অচেনা<br>অধ্যায়</div></div></div>
+</section>
+<section class="section" id="categories"><div class="section-head"><div><p class="eyebrow">DISCOVER</p><h2>ক্যাটাগরি</h2></div></div><div id="categoryChips" class="chips"></div></section>
+<section class="section" id="latest"><div class="section-head"><div><p class="eyebrow">UPDATED DAILY</p><h2>নতুন ও জনপ্রিয়</h2></div><span class="muted" id="resultCount"></span></div><div id="dramaGrid" class="drama-grid"></div></section>
+</main>
+<footer><b>MiniDrama</b><span>© 2026 MiniDrama. কনটেন্টের অধিকার সংশ্লিষ্ট মালিকের।</span><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="admin.html">Admin</a></div></footer>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card"><button class="close" id="closeModal">✕</button><div id="modalContent"></div></div></div>
+<script src="app.js"></script>
+</body></html>
