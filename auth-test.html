@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MiniDrama Admin Login Test</title>
+<style>
+body {
+  background:#09090d;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:25px;
+}
+input,button {
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  padding:14px;
+  margin:12px 0;
+  border-radius:9px;
+  border:0;
+}
+button {
+  background:#ff315e;
+  color:white;
+  font-weight:bold;
+}
+#result {
+  background:#22222c;
+  padding:15px;
+  border-radius:10px;
+  overflow-wrap:anywhere;
+}
+</style>
+</head>
+<body>
+
+<h2>🎬 MiniDrama Admin Login</h2>
+
+<input id="email" type="email"
+placeholder="Admin Email">
+
+<input id="password" type="password"
+placeholder="Admin Password">
+
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+
+<div id="result">Login করার অপেক্ষায়...</div>
+
+<script type="module">
+import { auth } from "./firebase-init.js";
+
+import {
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+const result = document.getElementById("result");
+
+document.getElementById("login").onclick = async () => {
+  try {
+    result.textContent = "Login হচ্ছে...";
+
+    const credential = await signInWithEmailAndPassword(
+      auth,
+      document.getElementById("email").value,
+      document.getElementById("password").value
+    );
+
+    result.textContent =
+      "✅ Firebase Login Successful!\nUID: " +
+      credential.user.uid;
+
+  } catch (error) {
+    result.textContent =
+      "❌ " + error.code + "\n" + error.message;
+  }
+};
+
+document.getElementById("logout").onclick = async () => {
+  await signOut(auth);
+  result.textContent = "আপনি Logout করেছেন।";
+};
+</script>
+
+</body>
+</html>
